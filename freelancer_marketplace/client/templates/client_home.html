@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Marketplace</title>
+    <link rel="stylesheet" href="{% static 'css/client_home.css' %}">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Client Home</h1>
+            <nav>
+                {% if user.is_authenticated %}
+                <a href="{% url 'client_logout' %}">Client Logout</a>
+                {% else %}
+                <a href="{% url 'login_client' %}">Client Login</a>
+                {% endif %}
+                <a href="{% url 'register_client' %}">Client Signup</a>
+                <a href="{% url 'all_freelancers' %}">Freelancers</a>
+                <a href="{% url 'add_project' %}">Add Project</a>
+                <a href="{% url 'freelancer_home' %}">Freelancer Home</a>
+                <a href="{% url 'client_dashboard' %}">Client Dashboard</a>
+                <a href="{% url 'inbox' %}">Inbox</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2>Welcome to Freelancer Marketplace</h2>
+                <p>Find the best freelancers for your projects and manage them effortlessly.</p>
+                <a href="{% url 'all_freelancers' %}" class="btn">Browse Freelancers</a>
+                <a href="{% url 'add_project' %}" class="btn btn-primary">Post a Project</a>
+            </div>
+        </section>
+        <!-- Add more sections or content as needed -->
+    </main>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Freelancer Marketplace</p>
+        </div>
+    </footer>
+</body>
+</html>

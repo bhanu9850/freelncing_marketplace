@@ -1,0 +1,60 @@
+/* Reset and basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4; /* Light gray background */
+    background-image: url("/static/images/freelancer.jpeg");
+    background-size:cover; 
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.container {
+    max-width: 960px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Light shadow */
+    border-radius: 5px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #333; /* Dark gray text color */
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #eee; /* Light gray border between items */
+}
+
+ul li:last-child {
+    border-bottom: none; /* Remove border from the last item */
+}
+
+strong {
+    font-weight: bold;
+}
+
+a {
+    color: #007bff; /* Blue color for links */
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Clients</title>
+    <link rel="stylesheet" href="{% static 'css/all_clients.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>All Clients</h2>
+        <ul>
+            {% for client in clients %}
+            <li>
+                <strong>{{ client.user.username }}</strong><br>
+                Company: {{ client.company_name }}<br>
+                Email: {{ client.user.email }}
+                {% if client.user.username %}
+                <a href="{% url 'send_message' client.user.username %}">Send Message</a>
+                {% else %}
+                <!-- Display a message if the client's username is empty -->
+                <span>No username available for this client</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

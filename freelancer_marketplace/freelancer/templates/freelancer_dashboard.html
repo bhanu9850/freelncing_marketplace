@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/freelancer_dashboard.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Freelancer Dashboard</h2>
+        <div class="freelancer-info">
+            <p><strong>Username:</strong> {{ freelancer.user.username }}</p>
+            <p><strong>First Name:</strong> {{ freelancer.user.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ freelancer.user.last_name }}</p>
+            <p><strong>Email:</strong> {{ freelancer.user.email }}</p>
+            <p><strong>Experience:</strong> {{ freelancer.experience }}</p>
+            <p><strong>Skills:</strong> {{ freelancer.skills }}</p>
+        </div>
+        <div class="link-container">
+            <a href="{% url 'freelancer_home' %}">Freelancer Home</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Welcome, {{ freelancer.user.username }}</h2>
+        <h3>Projects Done: {{ freelancer.get_project_count }}</h3>
+        <ul class="projects-list">
+            {% for project in projects_done %}
+            <li class="project-item">
+                <strong>Title:</strong> {{ project.title }}<br>
+                <strong>Client:</strong> {{ project.client.username }}<br>
+                <strong>Description:</strong> {{ project.description }}<br>
+                <!-- Add other project details as needed -->
+            </li>
+            {% empty %}
+            <li>No projects done yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

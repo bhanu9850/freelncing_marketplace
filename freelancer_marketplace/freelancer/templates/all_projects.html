@@ -1,0 +1,47 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects</title>
+    <link rel="stylesheet" href="{% static 'css/all_projects.css' %}">
+    
+</head>
+<body>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<div class="container">
+    <h2>All Projects</h2>
+    <ul>
+        {% for project in projects %}
+        <li>
+            <form action="{% url 'update_project_status' %}" method="post">
+                {% csrf_token %}
+                <strong>{{ project.client.username }}</strong> <br>
+                Title: {{ project.title }}<br>
+                Description: {{ project.description }}<br>
+                Budget: {{ project.budget }}<br>
+                Deadline: {{ project.deadline }}<br>
+                Status: {{ project.get_status_display }}<br>
+                <label for="accept-{{ project.id }}">Accept</label>
+                <input type="radio" id="accept-{{ project.id }}" name="status" value="accept">
+                <label for="reject-{{ project.id }}">Reject</label>
+                <input type="radio" id="reject-{{ project.id }}" name="status" value="reject">
+                <input type="hidden" name="project_id" value="{{ project.id }}">
+                <button type="submit">Submit</button>
+            </form>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+
+    
+</body>
+</html>
+        

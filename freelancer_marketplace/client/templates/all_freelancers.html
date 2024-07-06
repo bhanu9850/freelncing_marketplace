@@ -1,0 +1,30 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Freelancers</title>
+    <link rel="stylesheet" href="{% static 'css/all_freelancers.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>All Freelancers</h2>
+        <ul>
+            {% for freelancer in freelancers %}
+            <li>
+                <strong>{{ freelancer.user.username }}</strong><br>
+                Experience: {{ freelancer.experience }}<br>
+                Skills: {{ freelancer.skills }}<br>
+                Email: {{ freelancer.user.email }}<br>
+                {% if freelancer.user.username %}
+                <a href="{% url 'send_message' freelancer.user.username %}">Send Message</a>
+                {% else %}
+                <span>No username available for this freelancer</span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

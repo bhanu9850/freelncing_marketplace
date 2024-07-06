@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Dashboard</title>
+    <link rel="stylesheet" href="{% static 'css/client_dashboard.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h2>Client Dashboard</h2>
+        <p><strong>Username:</strong> {{ client.user.username }}</p>
+        <p><strong>First Name:</strong> {{ client.user.first_name }}</p>
+        <p><strong>Last Name:</strong> {{ client.user.last_name }}</p>
+        <p><strong>Email:</strong> {{ client.user.email }}</p>
+        <p><strong>Company Name:</strong> {{ client.company_name }}</p>
+        <a href="{% url 'client_home' %}">Client Home</a>
+    </div>
+    <div class="container">
+        <h3>My Projects</h3>
+        <ul>
+            {% for project in my_projects %}
+            <li>
+                <strong>{{ project.title }}</strong><br>
+                Description: {{ project.description }}<br>
+                Budget: {{ project.budget }}<br>
+                Deadline: {{ project.deadline }}<br>
+                Status: {{ project.get_status_display }}<br>
+                {% if project.status == 'accepted' %}
+                <a href="{% url 'process_payment' project.id %}">Pay Now</a>
+                {% endif %}
+                <form method="post" action="{% url 'delete_project' project.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+                
+            </li>
+            {% empty %}
+            <li>No projects found.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    
+</body>
+</html>

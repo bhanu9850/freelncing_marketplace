@@ -1,0 +1,118 @@
+/* all_projects.css */
+
+/* Global Styles */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    /* background-color: #f9f9f9; */
+    background-image: url("/static/images/freelancer.jpeg");
+    background-size:cover; 
+    background-repeat: no-repeat;
+    height: fit-content;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f3eded;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    margin-top: 0;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    padding: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  /* Form Styles */
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  label {
+    margin-bottom: 10px;
+    display: inline-block;
+    margin-right: 20px;
+  }
+  
+  input[type="radio"] {
+    margin-right: 10px;
+  }
+  
+  .radio-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .radio-group label {
+    margin-right: 20px;
+  }
+  
+  button[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    align-self: flex-end;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  /* Message Styles */
+  
+  .messages {
+    padding: 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .messages li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .messages li:last-child {
+    border-bottom: none;
+  }
+  
+  .messages li.error {
+    background-color: #ffe6e6;
+    color: #a94442;
+  }
+  
+  .messages li.success {
+    background-color: #dff0df;
+    color: #3c763d;
+  }
